@@ -1,0 +1,12 @@
+# dbt_project.yml
+name: f1_project
+version: 1.0
+profile: f1_project      
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+models:
+  f1_project:
+    +materialized: view  

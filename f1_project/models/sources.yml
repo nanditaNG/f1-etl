@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: main_src
+    database: f1
+    schema: main
+    tables:
+      - name: DRIVERS
+      - name: RACE
+      - name: SESSION
+      - name: SESSION_INFORMATION
+      - name: WEATHER

@@ -1,0 +1,4 @@
+name: motherduck
+type: duckdb
+options:
+  connection: "md:?motherduck_token=${MOTHERDUCK_TOKEN}"
