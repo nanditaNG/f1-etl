@@ -40,7 +40,7 @@ def sessions():
         # print(rec)
         df = pd.concat([df, pd.DataFrame([rec])],ignore_index=False)
     # df = pd.DataFrame(session_keys, columns=headers)
-    print(df.head())
+    # print(df.head())
     return df
 # sessions()
 

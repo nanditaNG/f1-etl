@@ -62,3 +62,10 @@ class f1:
         else:
             return response.json()
         
+    def get_position(self):
+        url = f'{self.base_url}/starting_grid'
+        response = requests.get(url)
+        if response.status_code == 404:
+            print(f"Error fetching positions")
+        else:
+            return response.json()

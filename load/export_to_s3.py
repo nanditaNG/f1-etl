@@ -19,12 +19,14 @@ def main():
         sessions_csv = os.path.join(EXPORT_DIR, "sessions.csv")
         session_information_csv = os.path.join(EXPORT_DIR, "session_information.csv")
         weather_csv = os.path.join(EXPORT_DIR, "weather.csv")
+        position_csv = os.path.join(EXPORT_DIR, "position.csv")
 
         con.execute(f"COPY (SELECT * FROM DRIVERS) TO '{drivers_csv}' (HEADER, DELIMITER ',');")
         con.execute(f"COPY (SELECT * FROM RACE) TO '{race_csv}' (HEADER, DELIMITER ',');")
         con.execute(f"COPY (SELECT * FROM SESSION) TO '{sessions_csv}' (HEADER, DELIMITER ',');")
         con.execute(f"COPY (SELECT * FROM SESSION_INFORMATION) TO '{session_information_csv}' (HEADER, DELIMITER ',');")
         con.execute(f"COPY (SELECT * FROM WEATHER) TO '{weather_csv}' (HEADER, DELIMITER ',');")
+        con.execute(f"COPY (SELECT * FROM POSITION) TO '{position_csv}' (HEADER, DELIMITER ',');")
 
         # Upload to S3
         func.write_to_s3(drivers_csv, Settings.bucket_name, "f1/drivers.csv")
@@ -32,6 +34,7 @@ def main():
         func.write_to_s3(sessions_csv, Settings.bucket_name, "f1/sessions.csv")
         func.write_to_s3(session_information_csv, Settings.bucket_name, "f1/session_information.csv")
         func.write_to_s3(weather_csv, Settings.bucket_name, "f1/weather.csv")
+        func.write_to_s3(position_csv, Settings.bucket_name, "f1/position.csv")
     finally:
         con.close()
 

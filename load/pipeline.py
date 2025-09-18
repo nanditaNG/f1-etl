@@ -8,12 +8,14 @@ def get_data():
     session_df = fn.sessions.sessions()
     session_information_df = fn.sessions.session_details()
     weather_df = fn.weather.weather()
+    position_df = fn.position.get_starting_position()
     return {
         "DRIVERS": driver_df
         , "RACE": race_df
         , "SESSION": session_df
         , "SESSION_INFORMATION": session_information_df
         , "WEATHER": weather_df
+        , "POSITION": position_df
     }
 
 def load_to_duckdb(dfs: dict):
